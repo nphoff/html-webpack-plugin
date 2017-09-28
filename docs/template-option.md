@@ -19,18 +19,19 @@ There are three ways to set the loader:
 
 ## 1) Don't set any loader
 
-By default (if you don't specify any loader in any way) a [fallback ejs loader](https://github.com/ampedandwired/html-webpack-plugin/blob/master/lib/loader.js) kicks in.
+By default (if you don't specify any loader in any way) a [fallback lodash loader](https://github.com/ampedandwired/html-webpack-plugin/blob/master/lib/loader.js) kicks in.
 
 ```js
 {
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.ejs'
+      template: 'src/index.html'
     })
   ]
 }
 ```
-It is a good idea to use `.ejs` instead of `.html` so you do not unexpectedly trigger another loader.
+
+Be aware that by using `.html`, you may inadvertently use another loader defined in your modules.
 
 ## 2) Setting a loader directly for the template
 
@@ -62,7 +63,7 @@ new HtmlWebpackPlugin({
 ```
 
 However this also means that in the following example webpack will use the [html loader for your template](https://webpack.js.org/loaders/html-loader/).
-This will **cause html minification** and it will also **disable the ejs fallback** loader.
+This will **cause html minification** and it will also **disable the lodash fallback** loader.
 
 ```js
 {
